@@ -18,14 +18,14 @@ for (let i:number=0; i<size; i++) {
 };
 console.table(matrix)
 
-/*Second solution, not so elegant (not working at the moment, don't understand why)
-let matrix2: number[][] = [];;
+
+let matrix2: any[][] = [];;
 for (let i:number=0; i<size; i++) {
     let currentRow = []
     for (let j: number=0; j<size; j++) {
         currentRow.push(0);
     };
+    matrix2.push(currentRow)
     matrix2[i][i] = 1
 };
 console.table(matrix2)
-*/
