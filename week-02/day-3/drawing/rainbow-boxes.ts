@@ -11,15 +11,14 @@ export {};
 // and draws a square of that size and color to the center of the canvas.
 // Create a loop that fills the canvas with a rainbow of colored squares.
 
-let canW = 600
-let canH = 600
+let canW: number = 600
+let canH: number = 600
 
-function makeSquare(x, color: string){
+function makeSquare(x: number, color: string){
     ctx.fillStyle = color
     ctx.fillRect((canW-x)/2, (canH-x)/2,x,x)
 }
 
-for (let i=120; i>0; i--) {
-    makeSquare(i*5, `hsl(${360/120*i},100%,50%)`)
-    console.log("i = "+i)
+for (let i=30; i>0; i--) {
+    makeSquare(i*20, `hsl(${360/30*i},100%,50%)`)
 }

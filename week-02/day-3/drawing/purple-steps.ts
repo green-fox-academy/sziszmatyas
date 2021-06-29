@@ -15,14 +15,6 @@ let x = size
 for (let i = 0; i < 6; i++) {
     ctx.fillStyle = "purple"
     ctx.fillRect(x + size*i, x + size*i, size+size*i, size+size*i)
-    x = x + size *i
-}
-
-x = size
-for (let i = 0; i < 6; i++) {
-    ctx.strokeStyle = "black" 
     ctx.strokeRect(x + size*i, x + size*i, size+size*i, size+size*i)
     x = x + size *i
-   
-    
 }
