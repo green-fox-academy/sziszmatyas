@@ -1,0 +1,27 @@
+
+###
+GET http://localhost:3000/posts HTTP/1.1
+
+###
+GET http://localhost:3000/posts/1 HTTP/1.1
+
+###
+POST http://localhost:3000/posts HTTP/1.1
+content-type: application/json
+
+{
+    "title": "hajjaj",
+    "url": "mehhhhhh"
+}
+
+###
+PUT http://localhost:3000/posts/1plus HTTP/1.1
+content-type: application/json
+
+###
+PUT http://localhost:3000/posts/1minus HTTP/1.1
+content-type: application/json
+
+###
+DELETE http://localhost:3000/posts/1 HTTP/1.1
+content-type: application/json
