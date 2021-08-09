@@ -1,29 +1,15 @@
 "use strict";
 
 import express from "express";
-import mysql from "mysql2";
 import { router } from "./routes.js";
 
 const app = express();
 const PORT = 3000;
 app.use(express.json());
 app.use(router);
+
+app.listen(PORT, () => console.log(`I am listening on port ${PORT}.`));
 /*
-let conn = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "reddit"
-})
-
-conn.connect((err) => {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log("Connection successful!")
-    }
-})
-
 app.get("/posts", (req, res) => {
     conn.query(`SELECT * FROM reddit;`, (err, rows) => {
         if (err) {
@@ -88,4 +74,4 @@ app.put("/posts/:id+minus", (req, res) => {
 
 app.delete()
 */
-app.listen(PORT, () => console.log(`I am listening on port ${PORT}.`));
+

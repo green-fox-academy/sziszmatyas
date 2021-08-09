@@ -37,7 +37,37 @@ export const Post = {
             }
         })
     },
-    putPlus: () => {},
-    putMinus: () => {},
-    delete: () => {},
+    putPlus: (id, resultHandler) => {
+        const query = "UPDATE reddit SET score = score + 1 WHERE id = ?;";
+        db.query(query, [id], (err, results) => {
+            if (err) {
+                console.log(err);
+                res.send(500);
+            } else {
+                resultHandler(results);
+            }
+        })
+    },
+    putMinus: (id, resultHandler) => {
+        const query = "UPDATE reddit SET score = score - 1 WHERE id = ?;";
+        db.query(query, [id], (err, results) => {
+            if (err) {
+                console.log(err);
+                res.send(500);
+            } else {
+                resultHandler(results);
+            }
+        })
+    },
+    delete: (id, resultHandler) => {
+        const query = "DELETE FROM reddit WHERE id = ?;";
+        db.query(query, [id], (err, results) => {
+            if (err) {
+                console.log(err);
+                res.send(500);
+            } else {
+                resultHandler(/*results*/);
+            }
+        })
+    },
 }

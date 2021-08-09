@@ -10,8 +10,14 @@ export const postsService = {
     postPost: (postParams, resultHandler) => {
         return Post.post(postParams, resultHandler)
     },
-    putPlusScoreById: (id) => {},
-    putMinusScoreById: (id) => {},
-    deletePostById: (id) => {},
+    putPlusScoreById: (id, resultHandler) => {
+        return Post.putPlus(id, resultHandler)
+    },
+    putMinusScoreById: (id, resultHandler) => {
+        return Post.putMinus(id, resultHandler)
+    },
+    deletePostById: (id, resultHandler) => {
+        return Post.delete(id, resultHandler)
+    },
 
 }

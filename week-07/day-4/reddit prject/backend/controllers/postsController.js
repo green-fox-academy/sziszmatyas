@@ -29,16 +29,37 @@ export const postsController = {
         postsService.postPost(req.body, resultHandler)
     },
 
-    putPlusScoreById: (req, res) => 
-    {res.send("putPlusScoreById")
-},
+    putPlusScoreById: (req, res) => {
+        const resultHandler = (dbResults) => {
+            if (dbResults) {
+                res.status(200). json(dbResults)
+            } else {
+                res.status(404).send(createErrorResponse("No post with such id."))
+            }
+        }
+        postsService.putPlusScoreById(req.params.id, resultHandler)
+    },
 
     putMinusScoreById: (req, res) => {
-        res.send("putMinusScoreById")
+        const resultHandler = (dbResults) => {
+            if (dbResults) {
+                res.status(200).json(dbResults)
+            } else {
+                res.status(404).send(createErrorResponse("No post with such id."))
+            }
+        }
+        postsService.putMinusScoreById(req.params.id, resultHandler)
     },
 
     deletePostById: (req, res) => {
-        res.send("deletePostById")
+        const resultHandler = (dbResults) => {
+            if (dbResults) {
+                res.status(200).json(dbResults)
+            } else {
+                res.status(404).send(createErrorResponse("No post with such id."))
+            }
+        }
+        postsService.deletePostById(req.params.id, resultHandler)
     },
 }
 
