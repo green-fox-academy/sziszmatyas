@@ -1,4 +1,5 @@
 import { db } from "../db/db.js"
+import { createErrorResponse } from "../services/errorService.js";
 
 export const Post = {
     getAll: (resultHandler) => {
@@ -30,10 +31,20 @@ export const Post = {
         //let postId = req.params.id;
         db.query(query, newPost, (err, results) => {
             if (err) {
-                console.log(err);
-                res.send(500);
+                resultHandler(err)
             } else {
-                resultHandler(results);
+                let newId = results.insertId;
+                //resultHandler(results);
+                const query = "SELECT * FROM reddit WHERE id = ?;"
+                //let postId = req.params.id;
+                db.query(query, [newId], (err, results) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        //let newId = results.insertId;
+                        resultHandler(results);
+                    }
+                })
             }
         })
     },
@@ -42,9 +53,12 @@ export const Post = {
         db.query(query, [id], (err, results) => {
             if (err) {
                 console.log(err);
-                res.send(500);
+                resultHandler(createErrorResponse(err))
             } else {
-                resultHandler(results);
+                if (results.affectedRows === 0) {
+                    resultHandler(createErrorResponse("no item with such id"))
+                }
+                resultHandler(results)
             }
         })
     },
